@@ -62,11 +62,7 @@ export default async function getCommitAndBranch(
 
   if (!(await hasPreviousCommit())) {
     const message = gitOneCommit(isGitHubAction);
-    if (isCi) {
-      throw new Error(message);
-    } else {
-      log.warn(message);
-    }
+    log.warn(message);
   }
 
   if (isFromEnvVariable) {
